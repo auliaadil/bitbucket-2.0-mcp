@@ -1,11 +1,11 @@
 {
-  "name": "bitbucket-mcp",
+  "name": "bitbucket-2.0-mcp",
   "version": "1.0.0",
   "description": "MCP server for Bitbucket API access",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "bitbucket-mcp": "dist/index.js"
+    "bitbucket-2.0-mcp": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",

@@ -12,7 +12,7 @@ import { BitbucketClient, BitbucketConfig } from './bitbucket-client.js';
 
 const server = new Server(
   {
-    name: 'bitbucket-mcp',
+    name: 'bitbucket-2.0-mcp',
     version: '1.0.0'
   },
   {
@@ -595,7 +595,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error('Bitbucket MCP Server running on stdio');
+  console.error('Bitbucket 2.0 MCP Server running on stdio');
 }
 
 main().catch((error) => {

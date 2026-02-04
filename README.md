@@ -50,7 +50,7 @@ This MCP server provides tools for:
 ```bash
 # Clone the repository
 git clone <your-repo-url>
-cd bitbucket-mcp
+cd bitbucket-2.0-mcp
 
 # Install dependencies
 npm install
@@ -62,7 +62,7 @@ npm run build
 ### Option 2: Install via npm (after publishing)
 
 ```bash
-npm install -g bitbucket-mcp
+npm install -g bitbucket-2.0-mcp
 ```
 
 ## Configuration
@@ -80,7 +80,7 @@ Add the following to your Claude Desktop configuration file:
   "mcpServers": {
     "bitbucket": {
       "command": "node",
-      "args": ["/path/to/bitbucket-mcp/dist/index.js"],
+      "args": ["/path/to/bitbucket-2.0-mcp/dist/index.js"],
       "env": {
         "BITBUCKET_WORKSPACE": "your-workspace-slug",
         "BITBUCKET_EMAIL": "your-email@example.com",
@@ -92,7 +92,7 @@ Add the following to your Claude Desktop configuration file:
 ```
 
 Replace:
-- `/path/to/bitbucket-mcp` with the actual path to this project
+- `/path/to/bitbucket-2.0-mcp` with the actual path to this project
 - `your-workspace-slug` with your Bitbucket workspace slug (e.g., "my-team")
 - `your-email@example.com` with your Atlassian account email
 - `your-app-password` with the Atlassian API token you created
