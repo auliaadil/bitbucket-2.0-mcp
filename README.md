@@ -62,7 +62,7 @@ npm run build
 ### Option 2: Install via npm (after publishing)
 
 ```bash
-npm install -g bitbucket-2.0-mcp
+npm install -g @auliaadil/bitbucket-2.0-mcp
 ```
 
 ## Configuration
