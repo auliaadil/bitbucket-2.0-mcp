@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "bitbucket": {
+      "command": "node",
+      "args": [
+        "/absolute/path/to/bitbucket-mcp/dist/index.js"
+      ],
+      "env": {
+        "BITBUCKET_WORKSPACE": "your-workspace-slug",
+        "BITBUCKET_EMAIL": "your-email@example.com",
+        "BITBUCKET_API_TOKEN": "your-atlassian-api-token-here"
+      }
+    }
+  }
+}
