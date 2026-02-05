@@ -45,11 +45,17 @@ This MCP server provides tools for:
 
 ## Installation
 
-### Option 1: Install from source
+### Option 1: Install via npm (Recommended)
+
+```bash
+npm install -g @auliaadil/bitbucket-2.0-mcp
+```
+
+### Option 2: Install from source (for development)
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/auliaadil/bitbucket-2.0-mcp.git
 cd bitbucket-2.0-mcp
 
 # Install dependencies
@@ -57,12 +63,6 @@ npm install
 
 # Build the project
 npm run build
-```
-
-### Option 2: Install via npm (after publishing)
-
-```bash
-npm install -g @auliaadil/bitbucket-2.0-mcp
 ```
 
 ## Configuration
@@ -75,6 +75,25 @@ Add the following to your Claude Desktop configuration file:
 
 **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
 
+If you installed via npm (Option 1):
+
+```json
+{
+  "mcpServers": {
+    "bitbucket": {
+      "command": "bitbucket-2.0-mcp",
+      "env": {
+        "BITBUCKET_WORKSPACE": "your-workspace-slug",
+        "BITBUCKET_EMAIL": "your-email@example.com",
+        "BITBUCKET_API_TOKEN": "your-atlassian-api-token"
+      }
+    }
+  }
+}
+```
+
+If you installed from source (Option 2):
+
 ```json
 {
   "mcpServers": {
@@ -84,7 +103,7 @@ Add the following to your Claude Desktop configuration file:
       "env": {
         "BITBUCKET_WORKSPACE": "your-workspace-slug",
         "BITBUCKET_EMAIL": "your-email@example.com",
-        "BITBUCKET_API_TOKEN": "your-app-password"
+        "BITBUCKET_API_TOKEN": "your-atlassian-api-token"
       }
     }
   }
@@ -92,12 +111,92 @@ Add the following to your Claude Desktop configuration file:
 ```
 
 Replace:
-- `/path/to/bitbucket-2.0-mcp` with the actual path to this project
 - `your-workspace-slug` with your Bitbucket workspace slug (e.g., "my-team")
 - `your-email@example.com` with your Atlassian account email
-- `your-app-password` with the Atlassian API token you created
+- `your-atlassian-api-token` with the Atlassian API token you created
+- `/path/to/bitbucket-2.0-mcp` with the actual path (only for source installation)
+
+### For Claude Code CLI
+
+Add the following to your Claude Code CLI configuration file (`~/.claude/config.json`):
+
+If you installed via npm (Option 1):
+
+```json
+{
+  "mcpServers": {
+    "bitbucket": {
+      "command": "bitbucket-2.0-mcp",
+      "env": {
+        "BITBUCKET_WORKSPACE": "your-workspace-slug",
+        "BITBUCKET_EMAIL": "your-email@example.com",
+        "BITBUCKET_API_TOKEN": "your-atlassian-api-token"
+      }
+    }
+  }
+}
+```
+
+If you installed from source (Option 2):
+
+```json
+{
+  "mcpServers": {
+    "bitbucket": {
+      "command": "node",
+      "args": ["/path/to/bitbucket-2.0-mcp/dist/index.js"],
+      "env": {
+        "BITBUCKET_WORKSPACE": "your-workspace-slug",
+        "BITBUCKET_EMAIL": "your-email@example.com",
+        "BITBUCKET_API_TOKEN": "your-atlassian-api-token"
+      }
+    }
+  }
+}
+```
+
+### For GitHub Copilot CLI
+
+Add the following to your Copilot CLI configuration file (`~/.github/copilot-cli/config.json`):
+
+If you installed via npm (Option 1):
+
+```json
+{
+  "mcpServers": {
+    "bitbucket": {
+      "command": "bitbucket-2.0-mcp",
+      "env": {
+        "BITBUCKET_WORKSPACE": "your-workspace-slug",
+        "BITBUCKET_EMAIL": "your-email@example.com",
+        "BITBUCKET_API_TOKEN": "your-atlassian-api-token"
+      }
+    }
+  }
+}
+```
+
+If you installed from source (Option 2):
+
+```json
+{
+  "mcpServers": {
+    "bitbucket": {
+      "command": "node",
+      "args": ["/path/to/bitbucket-2.0-mcp/dist/index.js"],
+      "env": {
+        "BITBUCKET_WORKSPACE": "your-workspace-slug",
+        "BITBUCKET_EMAIL": "your-email@example.com",
+        "BITBUCKET_API_TOKEN": "your-atlassian-api-token"
+      }
+    }
+  }
+}
+```
 
 ### For other MCP clients
+
+If you installed via npm (Option 1):
 
 Set the following environment variables:
 
@@ -110,7 +209,23 @@ export BITBUCKET_API_TOKEN="your-atlassian-api-token"
 Then run the server:
 
 ```bash
-node dist/index.js
+bitbucket-2.0-mcp
+```
+
+If you installed from source (Option 2):
+
+Set the following environment variables:
+
+```bash
+export BITBUCKET_WORKSPACE="your-workspace-slug"
+export BITBUCKET_EMAIL="your-email@example.com"
+export BITBUCKET_API_TOKEN="your-atlassian-api-token"
+```
+
+Then run the server:
+
+```bash
+node /path/to/bitbucket-2.0-mcp/dist/index.js
 ```
 
 ## Scope Requirements by Tool
@@ -283,9 +398,10 @@ If specific tools fail with permission errors:
 ### Tool Not Found
 
 If tools aren't appearing:
-1. Restart Claude Desktop after configuration changes
-2. Check the logs in Claude Desktop's developer console
-3. Verify the path to `index.js` is correct
+1. Restart your MCP client (Claude Desktop, Claude Code CLI, etc.) after configuration changes
+2. Check the logs in your client's developer console
+3. For npm installations: Verify the installation with `npm list -g @auliaadil/bitbucket-2.0-mcp`
+4. For source installations: Verify the path to `index.js` is correct
 
 ### Rate Limiting
 
